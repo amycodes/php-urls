@@ -3,7 +3,11 @@
 require_once 'src/functions.php';
 
 router('GET', '^/$', function() {
-    echo "Where would you like to go?";
+    echo "Where would you like to go? ";
+
+    if ($_GET['goto'] && !empty($_GET['goto'])) {
+        echo $_GET['goto'];
+    }
     exit();
 });
 
@@ -19,7 +23,6 @@ router('GET', '/(?<slug>[a-zA-Z0-9]*)$', function($params) {
     $query = sprintf("select url from railway.aliases where slug = '%s'", $params['slug']);
     $r = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($r,MYSQLI_ASSOC);
-    print_r($row);
     mysqli_close($conn);
     if ( empty($row['url']) ) {
         header("HTTP/1.0 404 Not Found");
