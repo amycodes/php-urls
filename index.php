@@ -33,5 +33,5 @@ router('GET', '/(?<slug>[a-zA-Z0-9]*)$', function($params) {
     }
 });
 
-header("HTTP/1.0 404 Not Found");
+//header("HTTP/1.0 404 Not Found");
 echo '404 Not Found';
