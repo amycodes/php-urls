@@ -15,7 +15,6 @@ function router($httpMethods, $route, $callback, $exit = true)
             $path = substr($path, $len);
         }
     }
-    print_r($path);
     if (!in_array($_SERVER['REQUEST_METHOD'], (array) $httpMethods)) {
         return;
     }
