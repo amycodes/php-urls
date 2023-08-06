@@ -3,8 +3,7 @@
 require_once 'src/functions.php';
 
 router('GET', '^/$', function() {
-    echo "Where would you like to go? ";
-
+    
     if (isset($_GET['goto']) && !empty($_GET['goto'])) {
         $slug = $_GET['goto'];
         $conn = mysqli_connect(getenv("MYSQLHOST"), getenv("MYSQLUSER"), getenv("MYSQLPASSWORD"), getenv("MYSQLDATABASE"), getenv("MYSQLPORT"));
@@ -25,7 +24,10 @@ router('GET', '^/$', function() {
             header("Location: " . $row['url']);
         }
     }
-    exit();
+    else {
+        echo "Where would you like to go? ";
+        exit();
+    }
 });
 
 // With named parameters
